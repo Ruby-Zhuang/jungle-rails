@@ -4,13 +4,15 @@
     <h1>My Cart</h1>
   </header>
 
+  <%# Display alert if shopping cart is empty %> 
   <% if enhanced_cart.empty? %>
     <div class="alert alert-warning" role="alert">
-      Your shopping cart is empty. Head back to the products page and start shopping!
+      Your shopping cart seems to be empty. Head back to the products page and start shopping!
     </div>
     
     <%= link_to 'Back to Products', :products, class: 'btn btn-primary' %>
 
+  <%# Display items in shopping cart if there's any %> 
   <% else %>
     <div class="panel panel-default items">
       <table class="table table-bordered">
