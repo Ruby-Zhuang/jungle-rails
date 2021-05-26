@@ -5,13 +5,13 @@
   </header>
 
   <div class="list-group">
-    <a href="/admin/products" class="list-group-item">
+    <p class="list-group-item">
       <span class="badge"><%= @total_products %></span>
-      Total Products
-    </a>
-    <%# Default reference to first category - also is there a better way %> 
-    <a href="/admin/categories" class="list-group-item">
+      <%= link_to 'Total Products', [:admin, :products] %>
+    </p>
+    <p class="list-group-item">
       <span class="badge"><%= @total_categories %></span>
-      Total Categories</a>
+      <%= link_to 'Total Categories', [:admin, :categories] %>
+    </p>
   </div>
 </section>
