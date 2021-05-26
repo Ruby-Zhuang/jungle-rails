@@ -5,11 +5,13 @@
   </header>
 
   <%= form_tag '/login' do %>
-
-    E-mail: <%= text_field_tag :email %>
-    Password: <%= password_field_tag :password %>
-    <%= submit_tag "Submit" %>
-
+    <div>E-mail: </div>
+    <div><%= text_field_tag :email %></div>
+    <br>
+    <div>Password: </div>
+    <div><%= password_field_tag :password %></div>
+    <br>
+    <div> <%= submit_tag "Submit" %></div>
   <% end %>
 
 </section>
