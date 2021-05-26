@@ -10,5 +10,25 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
+    @category = Category.new(category_params)
+    
+    # render plain: params[:category].inspect
+
+    if @category.save
+      redirect_to [:admin, :categories], notice: 'Category created!'
+    else
+      render :new
+    end
   end
+
+  private
+
+  # Whitelist (explicitly allow) controller parameters to prevent wrongful mass assignment
+  # Usually factored out so it can be reused by multiple actions in the same controller, for example create and update
+  def category_params
+    params.require(:category).permit(
+      :name
+    )
+  end
+
 end
