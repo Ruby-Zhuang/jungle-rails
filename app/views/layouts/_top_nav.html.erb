@@ -10,6 +10,7 @@
       <a class="navbar-brand" href="/">Jungle</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
+      <!-- Left navbar -->
       <ul class="nav navbar-nav">
         <li>
           <%= link_to 'Home', :root %>
@@ -29,8 +30,11 @@
           <%= link_to 'About', :about_index %>
         </li>
       </ul>
+
+      <!-- Right navbar -->
       <ul class="nav navbar-nav navbar-right">
-       <li class="dropdown">
+        <!-- Admin menu -->
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
             <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
@@ -42,11 +46,30 @@
             <li><%= link_to 'Categories',  [:admin, :categories] %></li>
           </ul>
         </li>
+
+        <!-- Cart -->
         <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
+        
+        <!-- Login, Register and Logout -->
+        <% if current_user %>
+          <li class="navbar-text"> 
+            Logged in as: <%= current_user.email %>
+          </li>
+          <li>
+          <%= link_to "Logout", [:logout] %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Login", [:login] -%>
+          </li>
+          <li>
+            <%= link_to "Sign Up", [:signup] -%>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
