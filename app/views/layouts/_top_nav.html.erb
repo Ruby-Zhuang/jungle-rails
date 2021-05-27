@@ -22,13 +22,15 @@
           </a>
           <ul class="dropdown-menu">
             <% Category.all.each do |category| %>
+              <!-- raise category.inspect -->
+              <!-- How does this link to each individual category? Don't need the ":"? -->
               <li><%= link_to category.name, category %></li>
             <% end %>
           </ul>
         </li>
         <li>
           <%= link_to 'About', [:about] %>
-          <!-- <%= link_to 'About', :about %> also works -->
+          <!-- <%= link_to 'About', :about %> also work? -->
         </li>
       </ul>
 
