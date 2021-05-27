@@ -3,6 +3,13 @@
   <header class="page-header">
     <h1>Admin &raquo; All Products</h1>
   </header>
+  
+  <!-- Notice if there's a new product or product is destroyed -->
+  <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <span><%= notice %></span>
+    </div>
+  <% end %>  
 
   <div class="well">
     <%= link_to '+ New Product', [:new, :admin, :product], class: 'btn btn-info' %>
