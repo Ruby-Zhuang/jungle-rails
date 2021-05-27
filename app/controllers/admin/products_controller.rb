@@ -6,6 +6,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
+    # Why do we need this?
     @product = Product.new
   end
 
