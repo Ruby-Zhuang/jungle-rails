@@ -33,9 +33,6 @@ Rails.application.routes.draw do
   # Signup routes: show registration form and creating new users
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-  # resources :signup, only: .....
-  # resources :users, only: [:create]
-  # WHERE TO USE GET VS RESOURCES?!
 
   # Session routes: show users a login form, logging in, and logging out.
   get '/login' => 'sessions#new'
