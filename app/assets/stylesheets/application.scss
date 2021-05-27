@@ -1,10 +1,10 @@
 // Vendor
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome';
 
 // App
-@import "products";
+@import 'products';
 
 // Global
 body {
@@ -14,4 +14,17 @@ body {
 // Bootstrap adjustments
 form.button_to {
   display: inline;
+}
+
+// Tables
+table.table {
+  thead tr th {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  tbody tr td {
+    vertical-align: middle;
+    text-align: center;
+  }
 }
