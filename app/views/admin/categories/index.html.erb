@@ -4,13 +4,6 @@
     <h1>Admin &raquo; All Categories</h1>
   </header>
 
-  <!-- Notice if there's a new category -->
-  <% if notice %>
-    <div class="alert alert-success" role="alert">
-      <span><%= notice %></span>
-    </div>
-  <% end %>  
-
   <div class="well">
     <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
   </div>

@@ -11,6 +11,13 @@
   <%= render 'layouts/top_nav' %>
 
   <main class="container">
+    <!-- Display notice if it exists -->
+    <% if notice %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:notice]  %> 
+      </div>
+    <% end %>
+
     <%= yield %>
   </main>
 
