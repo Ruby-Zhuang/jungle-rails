@@ -6,6 +6,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
+    # This instance variable is for the form_for method
     @category = Category.new
   end
 

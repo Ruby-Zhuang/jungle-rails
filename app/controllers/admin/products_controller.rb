@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
-    # Why do we need this?
+    # This instance variable is for the form_for method
     @product = Product.new
   end
 
