@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: 'products#index'
   # above same as get '/' => 'products#index'
 
-  resources :about, only: [:index]
+  # --------------------------------------------------------------
+  # RESOURCEFUL ROUTES -------------------------------------------
+  # --------------------------------------------------------------
+  # In Rails, a resourceful route provides a mapping between HTTP verbs and URLs to controller actions. 
+  # By convention, each action also maps to a specific CRUD operation in a database.
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
@@ -19,6 +23,12 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
     resources :categories, except: [:edit, :update, :show, :destroy]
   end
+
+  # --------------------------------------------------------------
+  # NON-RESOURCEFUL ROUTES ---------------------------------------
+  # --------------------------------------------------------------
+  # About page
+  get '/about' => 'about#index'
 
   # Signup routes: show registration form and creating new users
   get '/signup' => 'users#new'
