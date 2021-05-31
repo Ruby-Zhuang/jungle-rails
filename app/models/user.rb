@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   # two fields should receive exactly the same content
   validates :password, confirmation: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  # authentication (class) method
+  def self.authenticate_with_credentials(email, password)
+    # Return: an instance of the user (if successfully authenticated), or nil
+    User.find_by_email(email).authenticate(password) || nil
+  end
 end
