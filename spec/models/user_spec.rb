@@ -82,9 +82,15 @@ RSpec.describe User, type: :model do
       end
 
       it "should return an instance of the user regardless of trailing spaces before and/or after email" do
+        @user.save
+        authenticated_user = User.authenticate_with_credentials('  teSt@exAmpLe.Com  ', 'secret')
+        expect(authenticated_user.email).to eq @user.email
       end
 
       it "should return nil if unsuccessfully authenticated due to incorrect password" do
+        @user.save
+        authenticated_user = User.authenticate_with_credentials('test@example.com', 'wrong password')
+        expect(authenticated_user).to be nil
       end
       
       it "should return nil if unsuccessfully authenticated due to non-existing user" do
