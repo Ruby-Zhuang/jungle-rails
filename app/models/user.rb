@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  # authentication (class) method
+  # authentication (class) method, eeturn: an instance of the user (if successfully authenticated), or nil
   def self.authenticate_with_credentials(email, password)
     email_normalized = email.downcase.strip # Remove leading/trailing spaces and make email lowercase
-    # Return: an instance of the user (if successfully authenticated), or nil
-    User.find_by_email(email_normalized).authenticate(password) || nil
+    user = User.find_by_email(email_normalized)
+    user && user.authenticate(password) || nil # check if user exists before authenticating password
   end
 end

@@ -94,6 +94,9 @@ RSpec.describe User, type: :model do
       end
       
       it "should return nil if unsuccessfully authenticated due to non-existing user" do
+        @user.save
+        authenticated_user = User.authenticate_with_credentials('doesnotexist@example.com', 'secret')
+        expect(authenticated_user).to be nil
       end
     end
 
