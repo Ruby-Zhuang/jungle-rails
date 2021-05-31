@@ -19,7 +19,7 @@ RSpec.describe Product, type: :model do
       @product.name = nil
       @product.save
       expect(@product).to_not be_valid
-      expect(@product.errors.full_messages).to_not be_empty
+      expect(@product.errors.full_messages).to include "Name can't be blank"
     end
 
     # validates :price, presence: true
@@ -27,7 +27,7 @@ RSpec.describe Product, type: :model do
       @product.price_cents = nil
       @product.save
       expect(@product).to_not be_valid
-      expect(@product.errors.full_messages).to_not be_empty
+      expect(@product.errors.full_messages).to include "Price can't be blank"
     end
 
     # validates :quantity, presence: true
@@ -35,7 +35,7 @@ RSpec.describe Product, type: :model do
       @product.quantity = nil
       @product.save
       expect(@product).to_not be_valid
-      expect(@product.errors.full_messages).to_not be_empty
+      expect(@product.errors.full_messages).to include "Quantity can't be blank"
     end
 
     # validates :category, presence: true
@@ -43,7 +43,7 @@ RSpec.describe Product, type: :model do
       @noCategoryProduct = Product.new(:name => "Test Product", :price => 100, :quantity => 10)
       @noCategoryProduct.save
       expect(@noCategoryProduct).to_not be_valid
-      expect(@noCategoryProduct.errors.full_messages).to_not be_empty
+      expect(@noCategoryProduct.errors.full_messages).to include "Category can't be blank"
     end
 
   end
