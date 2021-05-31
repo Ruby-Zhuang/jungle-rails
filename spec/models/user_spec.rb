@@ -13,7 +13,29 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to be_empty
     end
 
-    # Password Validations
+    # Valid fields
+    it "should fail to create a user when first_name is not specified" do
+      @user.first_name = nil
+      @user.save
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include "First name can't be blank"
+    end
+    
+    it "should fail to create a user when last_name is not specified" do
+      @user.last_name = nil
+      @user.save
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include "Last name can't be blank"
+    end
+
+    it "should fail to create a user when email is not specified" do
+      @user.email = nil
+      @user.save
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include "Email can't be blank"
+    end
+
+    # PASSWORD VALIDATIONS
     describe 'Password' do
       it "should fail to create a user when password is not specified" do
         @user.password = nil
