@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Validations' do
-    before do
-      @user = User.new(:first_name => "Jane", :last_name => "Doe", :email => "test@example.com", :password => "secret", :password_confirmation => "secret")
-    end
+  before do
+    @user = User.new(:first_name => "Jane", :last_name => "Doe", :email => "test@example.com", :password => "secret", :password_confirmation => "secret")
+  end
 
+  ##### VALIDATIONS #####
+  describe 'Validations' do
     # Valid user
     it "should successfully saves a user given a first name, last name, email, password and password confirmation" do
       @user.save
@@ -66,7 +67,29 @@ RSpec.describe User, type: :model do
       end
     end
 
+    ##### AUTHENTICATE WITH CREDENTIALS #####
+    describe '.authenticate_with_credentials' do
+      it "should return an instance of the user if successfully authenticated" do
+        @user.save
+        authenticated_user = User.authenticate_with_credentials('test@example.com', 'secret')
+        expect(authenticated_user.email).to eq @user.email
+      end
 
+      it "should return an instance of the user regardless of email case" do
+        @user.save
+        authenticated_user = User.authenticate_with_credentials('teSt@exAmpLe.Com', 'secret')
+        expect(authenticated_user.email).to eq @user.email
+      end
+
+      it "should return an instance of the user regardless of trailing spaces before and/or after email" do
+      end
+
+      it "should return nil if unsuccessfully authenticated due to incorrect password" do
+      end
+      
+      it "should return nil if unsuccessfully authenticated due to non-existing user" do
+      end
+    end
 
 
   end

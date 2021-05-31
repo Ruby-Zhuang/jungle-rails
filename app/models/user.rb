@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   # authentication (class) method
   def self.authenticate_with_credentials(email, password)
+    email_normalized = email.downcase
     # Return: an instance of the user (if successfully authenticated), or nil
-    User.find_by_email(email).authenticate(password) || nil
+    User.find_by_email(email_normalized).authenticate(password) || nil
   end
 end
