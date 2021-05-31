@@ -35,6 +35,13 @@ RSpec.describe User, type: :model do
         expect(@user).to_not be_valid
         expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
       end
+
+      it "should fail to create a user when password and password_confirmation are less than the required length" do
+        @user.password = "Short"
+        @user.save
+        expect(@user).to_not be_valid
+        expect(@user.errors.full_messages).to include "Password is too short (minimum is 6 characters)"
+      end
     end
 
 
