@@ -29,11 +29,30 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "Last name can't be blank"
     end
 
-    it "should fail to create a user when email is not specified" do
-      @user.email = nil
-      @user.save
-      expect(@user).to_not be_valid
-      expect(@user.errors.full_messages).to include "Email can't be blank"
+    # EMAIL VALIDATIONS
+    describe 'E-mail' do
+      it "should fail to create a user when email is not specified" do
+        @user.email = nil
+        @user.save
+        expect(@user).to_not be_valid
+        expect(@user.errors.full_messages).to include "Email can't be blank"
+      end
+
+      it "should fail to create a user when email already exists" do
+        user2 = User.new(:first_name => "John", :last_name => "Smith", :email => "test@example.com", :password => "secret", :password_confirmation => "secret")
+        @user.save
+        user2.save
+        expect(user2).to_not be_valid
+        expect(user2.errors.full_messages).to include "Email has already been taken"
+      end
+
+      it "should fail to create a user when email already exists regardless of case" do
+        user2 = User.new(:first_name => "John", :last_name => "Smith", :email => "teSt@example.COM", :password => "secret", :password_confirmation => "secret")
+        @user.save
+        user2.save
+        expect(user2).to_not be_valid
+        expect(user2.errors.full_messages).to include "Email has already been taken"
+      end
     end
 
     # PASSWORD VALIDATIONS
