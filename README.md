@@ -10,8 +10,10 @@ Browsing Products
 !["GIF of Browsing Products"](https://github.com/Ruby-Zhuang/jungle-rails/blob/master/docs/Products.gif?raw=true)
 
 Adding Items To Cart
+!["GIF of Adding Items to Cart"](https://github.com/Ruby-Zhuang/jungle-rails/blob/master/docs/Adding%20Items.gif?raw=true)
 
 Making an Order
+!["GIF of Making an Order"](https://github.com/Ruby-Zhuang/jungle-rails/blob/master/docs/Making%20Order.gif?raw=true)
 
 ## Additional Steps for Apple M1 Machines
 
