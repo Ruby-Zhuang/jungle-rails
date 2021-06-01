@@ -7,7 +7,7 @@ This project was used to simulate the real world experience of inheriting an exi
 ## Features
 
 Browsing Products
-!["GIF of Browsing Products"]()
+!["GIF of Browsing Products"](https://github.com/Ruby-Zhuang/jungle-rails/blob/master/docs/Products.gif?raw=true)
 
 Adding Items To Cart
 
